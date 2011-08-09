@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html>
+    <head>
+        <title>NSU Programming Team</title>
+        <link rel="stylesheet" href="css/main.css" type="text/css">
+    {% if not is_debug %}
+        <script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-24473992-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+
+        </script>   
+        <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script> 
+    {% endif %}
+    </head>
+    <meta name="description" content="Homepage of NSU Programming Team"> 
+
+    
+    <body>
+    
+    <div class="container">
+        
+        <!-- Header --!>
+        <div id="pagehead">
+            <h1> <a href="http://nsurank.appspot.com">NSU Programming Team</a> <h1>
+        </div> 
+
+        <ul id="navbar">
+        <li><a href="http://nsurank.appspot.com">Home</a></li>
+        <li><a href="nsurank.html">NSURank</a></li>
+        <li><a href="archive.html">Archive</a></li>
+        </ul>
+
+         <!-- Main Content --!>
+         <div id="inner-container">
+             {% block innercontainer %}
+            <div id="column-left">
+                {% block leftcolumn %}
+                <p>This is the left column </p>
+                {% endblock %}
+            </div>
+
+            <div id="column-right">
+                {% block rightcolumn %}
+                <div id="group" class="smallbox">
+                <div class="normalhead"><h3>Join Us!</h3> </div>
+                <p> Join our google group and stay connected. We are <a href="http://groups.google.com/group/nsu_problem_solvers/">right here</a>! </p>
+                </div>
+                
+                <div class="mygbox">
+                <g:plusone size="standard" href="http://nsurank.appspot.com/"></g:plusone>
+                </div>
+                {% endblock %}
+            </div>
+            {% endblock %} 
+        </div>
+    </div>
+    </body>
+</html>
+
+

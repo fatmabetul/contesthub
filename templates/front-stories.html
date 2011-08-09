@@ -1,0 +1,16 @@
+{% for story in stories %}
+
+    <div class="box">
+        <div>
+            <div class="date">
+                <span class="day">{{ story.day }}</span>
+                <span class="month">{{ story.month }}</span>
+                <span class="year">{{ story.year }}</span>
+            </div>
+        </div> 
+
+        <div class="heading"> <h3>{{story.heading}}</h3> </div>
+        <p>{{story.content}}</p>
+    </div>
+
+{% endfor %}

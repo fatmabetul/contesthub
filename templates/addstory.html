@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Add Story {% endblock %}
+{% block body %} 
+        {% block leftcolumn %}
+        
+            <form class="formbox" method="post" action="/addstory" accept-charset="utf-8">
+                
+                Heading <br> <input type='text' name ='heading' style="width:400px"> <br>
+                Content <br> <textarea name="content" rows="7" cols="40" style="width:400px"></textarea> 
+            
+            <p><input type="submit" value="Submit"></p>
+            </form>
+            
+            <div class="note">*Remember - a story cannot have more than 500 characters in content</div>
+        {% endblock %}
+{% endblock %}
