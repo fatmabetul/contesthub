@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block leftcolumn %}
+    <div id="list2"><ol>
+    {% for ranklist in ranklists %}
+    <div class="medbox">
+        <li><p><em><b>{{ ranklist.name }}</b></em>
+        Top 3 - (Not found) 
+        <em><a href="summary/{{ ranklist.key }}">Summary</a></em></p></li>
+    </div>
+    {% endfor %}
+    </ol></div>
+{% endblock %}
+

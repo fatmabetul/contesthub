@@ -10,10 +10,10 @@ class Story( db.Model ):
 
 class Summary( db.Model ):
     entrytime = db.DateTimeProperty(auto_now_add=True)
-    summary = db.BlobProperty()
+    summary = db.TextProperty()
     name = db.StringProperty()    
 
-class Coder( db.model ):
+class Coder( db.Model ):
     name = db.StringProperty()
     contest = db.IntegerProperty()
     solve = db.IntegerProperty()

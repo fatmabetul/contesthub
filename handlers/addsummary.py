@@ -19,24 +19,25 @@ class AddSummary( webapp.RequestHandler ):
         path = os.path.join( conf.APP_ROOT, 'templates', 'addsummary.html' )
         self.response.out.write( template.render( path, template_values ) )
 
-
+    
+    # for now i will assume that it works
     def process( self, summary ):
+        logging.error( summary )
         return "fahim"
 
     def post(self):
         
         ifile = self.request.get("summary")
-        s = Summary(
-            summary = db.Blob( str(ifile) ),
-            name = self.process( ifile ) 
-        )
-        
-        if not s.summary :
+        if not ifile:
             logging.error("no file selected")
+            self.redirect( "/addsummary" )
         else:
+            s = Summary(
+                summary = ifile,
+                name = self.process( str(ifile) ) 
+            )
             s.put()
-
-        self.redirect( "/" )
+            self.redirect( "/archive" )
 
 
 

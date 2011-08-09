@@ -3,8 +3,7 @@
 {% block body %} 
         {% block leftcolumn %}
         
-            <form class="formbox" method="post" action="/addsummary">
-                
+            <form class="formbox" method="post" enctype="multipart/form-data" action="/addsummary">
                 <div class="normalheadleft"> <h3>Upload Summary</h3> </div> <br>
                 <input type="file" name="summary"/>
                 <input type="submit" value="Submit">
