@@ -20,10 +20,6 @@ class AddStory( webapp.RequestHandler ):
 
 
     def post(self):
-        template_values = {
-            'is_debug' : conf.DEBUG
-        }
-
         months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', \
                     'Sep', 'Oct', 'Nov', 'Dec' ] 
         

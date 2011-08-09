@@ -7,3 +7,20 @@ class Story( db.Model ):
     heading = db.StringProperty(required=True)
     content = db.StringProperty(multiline=True, required=True)
     entrytime = db.DateTimeProperty()
+
+class Summary( db.Model ):
+    entrytime = db.DateTimeProperty(auto_now_add=True)
+    summary = db.BlobProperty()
+    name = db.StringProperty()    
+
+class Coder( db.model ):
+    name = db.StringProperty()
+    contest = db.IntegerProperty()
+    solve = db.IntegerProperty()
+    attempt = db.IntegerProperty()
+    points = db.IntegerProperty()
+
+    bestrank = db.IntegerProperty()
+    bestdate = db.StringProperty()
+    worstrank = db.IntegerProperty()
+    worstdate = db.StringProperty()

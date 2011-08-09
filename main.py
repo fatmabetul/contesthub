@@ -4,12 +4,13 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 import os
 import conf
 from handlers import FrontPage, Hello
-from handlers import AddStory
+from handlers import AddStory, AddSummary
 
 __application__ = webapp.WSGIApplication(
     [
         ('/hello', Hello),
         ('/addstory', AddStory),
+        ('/addsummary', AddSummary),
         ('/', FrontPage),
     ],
     debug=conf.DEBUG)
