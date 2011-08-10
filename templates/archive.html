@@ -5,7 +5,9 @@
     {% for ranklist in ranklists %}
     <div class="medbox">
         <li><p><em><b>{{ ranklist.name }}</b></em>
-        Top 3 - (Not found) 
+        {% if ranklist.bests %}
+        Top 3 - {{ ranklist.bests }}
+        {% endif %}
         <em><a href="summary/{{ ranklist.key }}">Summary</a></em></p></li>
     </div>
     {% endfor %}

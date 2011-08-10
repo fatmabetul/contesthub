@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block leftcolumn %}
+    <div id="tablefix">
+        <table>
+            <tr><th>Rank</th><th>Name</th><th class='num'>Points</th><th>Contests</th></tr>
+            
+            {% for coder in coders %}
+            <tr {% cycle class='odd',class="even" %}
+            >
+            <td>{{ coder.rank }}</td>
+            <td>{{ coder.name }}</td>
+            <td>{{ coder.points }}</td>
+            <td>{{ coder.contest }}</td>
+            
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+

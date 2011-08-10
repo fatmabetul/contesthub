@@ -12,6 +12,7 @@ class Summary( db.Model ):
     entrytime = db.DateTimeProperty(auto_now_add=True)
     summary = db.TextProperty()
     name = db.StringProperty()    
+    bests = db.StringProperty()
 
 class Coder( db.Model ):
     name = db.StringProperty()
@@ -19,8 +20,5 @@ class Coder( db.Model ):
     solve = db.IntegerProperty()
     attempt = db.IntegerProperty()
     points = db.IntegerProperty()
+    rank = db.IntegerProperty()
 
-    bestrank = db.IntegerProperty()
-    bestdate = db.StringProperty()
-    worstrank = db.IntegerProperty()
-    worstdate = db.StringProperty()
