@@ -4,11 +4,10 @@ from google.appengine.ext import db
 
 from datetime import datetime
 
-import os, re
+import os, re, md5
 import conf
 import logging
-from model import Story, Summary, Coder
-
+from model import Story, Summary, Coder 
 points = [20,15,12,10,8,6,4,3,2,1]
 
 class AddSummary( webapp.RequestHandler ):
@@ -19,7 +18,7 @@ class AddSummary( webapp.RequestHandler ):
         
         path = os.path.join( conf.APP_ROOT, 'templates', 'addsummary.html' )
         self.response.out.write( template.render( path, template_values ) )
-   
+    
     # update data from one file
     def process(self, f):
         
@@ -27,7 +26,7 @@ class AddSummary( webapp.RequestHandler ):
             <td>(\d+)</td>            # rank
             <td>([A-Za-z. ]+)</td>    # name
             .*                        # rest of the line
-            <td>\d+/(\d+)</td>        # problemcount
+            <td>(\d+)/(\d+)</td>      # attempt, problemcount
             """
         reg = re.compile( pattern, re.VERBOSE )
        
@@ -47,16 +46,12 @@ class AddSummary( webapp.RequestHandler ):
         results = reg.finditer(f)
         for result in results:
             # picking up details
-            print "coming here"
-
+            
             rank = int(result.group(1))
             name = result.group(2)
-            solved = int(result.group(3))
+            attempts = int(result.group(3))
+            solved = int(result.group(4))
             earned = 0
-           
-            print name
-
-            logging.error( name )
 
             # pick up the earned points
             if rank <= 10 and int(solved) != 0:
@@ -81,12 +76,19 @@ class AddSummary( webapp.RequestHandler ):
                 coder.solve = solved
                 coder.points = earned
                 coder.contest = 1
+                coder.attempt = attempts
+                coder.accuracy = str( round(( coder.solve * 100. ) /  coder.attempt, 2) )
+                coder.md5 = "?d=mm"
                 coder.put()
             else:
                 for coder in coders: # it's one object though
                     coder.solve += solved
                     coder.points += earned
                     coder.contest += 1
+                    coder.attempt += attempts
+                    coder.accuracy = str( round(( coder.solve * 100. ) / coder.attempt,2) )
+                    if coder.email:
+                        coder.md5 = md5.new( email ).hexdigest()
                     coder.put()
             
             

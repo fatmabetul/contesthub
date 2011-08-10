@@ -315,3 +315,5 @@ tbody tr.odd td {
     margin-bottom: 30px;
     margin-left: 15px;
 }
+
+.stats img { float:right;}

@@ -21,4 +21,8 @@ class Coder( db.Model ):
     attempt = db.IntegerProperty()
     points = db.IntegerProperty()
     rank = db.IntegerProperty()
+    accuracy = db.StringProperty()
+
+    email = db.StringProperty()
+    md5 = db.StringProperty()
 

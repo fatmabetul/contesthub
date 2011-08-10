@@ -28,16 +28,23 @@
                     <td>{{ coder.name }}</td>
                     <td>{{ coder.points }}</td>
                     <td>{{ coder.contest }}</td>
-            
                 </tr>
                 <tr>
                     <td colspan="4">
                         <div class="stats">
+                            <a href="http://gravatar.com/emails/">
+                                <img src="http://www.gravatar.com/avatar/{{coder.md5}}?s=120" 
+                                    title="Change your avatar at gravatar.com" 
+                                >
+                            </a>
                             <h3>Coder #{{ coder.rank }} | {{ coder.name }}</h3>
                             <ul>
                                 <li><b>{{ coder.points }}</b> earned points</li>
                                 <li><b>{{ coder.contest }}</b> internal contests</li>
                                 <li><b>{{ coder.solve }}</b> solved problems</b></li>
+                                <li><b>{{ coder.attempt }}</b> attempts</b></li>
+                                <li><b>{{ coder.accuracy }}%</b> accuracy</b></li>
+                                <li><b>{{ coder.email }}</b> email </b></li>
                             </ul>
                         </div>
                     </td>
