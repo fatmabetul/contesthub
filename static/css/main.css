@@ -116,7 +116,9 @@ ul#navbar li a:hover {
 }
 
 .box{
-   background: #BEE5FC; 
+/*   background: #BEE5FC;
+    background: #E8EEFA; */
+    background: #d5eaf0;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
@@ -142,15 +144,15 @@ ul#navbar li a:hover {
 
 
 .smallbox{
-   background: #BEE5FC; 
+   background: #d5eaf0; 
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
     width:200px;
-    height:130px;
-    margin-left: 10px;
+    min-height:130px;
+    margin-left: 5px;
     margin-top: 10px;
-    margin-right: 10px;
+    margin-right: 5px;
     margin-bottom: 10px;
 }
 
@@ -163,7 +165,7 @@ ul#navbar li a:hover {
 }
 
 .box:hover {
-    background: #BEE5FC;
+/*    background: #BEE5FC; */
 }
 
 .date {
@@ -242,7 +244,7 @@ ul#navbar li a:hover {
 #list2 ol li b { font-size:15px }
 
 .medbox{
-    background: #BEE5FC;
+    background: #d5eaf0;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
@@ -317,3 +319,44 @@ tbody tr.odd td {
 }
 
 .stats img { float:right;}
+
+.login-container {
+    background-color: #FFFFFF;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border: 1px solid #C3D9FF;
+    padding: 3px;
+    width: 100%;
+}
+
+.login-box {
+    background-color: #d5eaf0;
+     -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    font-size: 13px;
+    height: 100%;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.login-box-content {
+    padding: 5px;
+}
+
+.login-box-title {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#loginBtn {
+    background: url("/img/signInBtn.gif") no-repeat scroll center center transparent !important;
+    border: medium none;
+    cursor: pointer;
+    display: block;
+    height: 43px;
+    margin-top: 15px;
+    width: 100%;
+}
+
