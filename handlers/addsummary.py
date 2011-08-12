@@ -7,7 +7,9 @@ from datetime import datetime
 import os, re, md5
 import conf
 import logging
-from model import Story, Summary, Coder 
+from model import Story, Summary, Coder
+from secret import EMAIL
+
 points = [20,15,12,10,8,6,4,3,2,1]
 
 class AddSummary( webapp.RequestHandler ):
@@ -78,7 +80,11 @@ class AddSummary( webapp.RequestHandler ):
                 coder.contest = 1
                 coder.attempt = attempts
                 coder.accuracy = str( round(( coder.solve * 100. ) /  coder.attempt, 2) )
-                coder.md5 = "?d=mm"
+                if coder.name in EMAIL:
+                    coder.email = EMAIL[ coder.name ]
+                    coder.md5 = md5.new( coder.email ).hexdigest()  # md5 hash of email id
+                else:
+                    coder.md5 = "?d=mm"
                 coder.put()
             else:
                 for coder in coders: # it's one object though
@@ -87,8 +93,11 @@ class AddSummary( webapp.RequestHandler ):
                     coder.contest += 1
                     coder.attempt += attempts
                     coder.accuracy = str( round(( coder.solve * 100. ) / coder.attempt,2) )
-                    if coder.email:
-                        coder.md5 = md5.new( email ).hexdigest()
+                    if coder.name in EMAIL:
+                        coder.email = EMAIL[ coder.name ]
+                        coder.md5 = md5.new( coder.email ).hexdigest()
+                    else:
+                        coder.md5 = "?d=mm"
                     coder.put()
             
             
