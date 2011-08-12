@@ -5,3 +5,4 @@ from addsummary import AddSummary
 from archive import Archive
 from summary import ShowSummary 
 from nsurank import NSURank 
+from error import Error 

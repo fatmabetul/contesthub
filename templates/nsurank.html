@@ -13,7 +13,7 @@
                 $(this).next("tr").toggle();
 //                $(this).find(".arrow").toggleClass("up");
             });
-            //$("#report").jExpand();
+//            $("#summary").jExpand();
         });
     </script>         
 {% endblock %} 
@@ -32,11 +32,13 @@
                 <tr>
                     <td colspan="4">
                         <div class="stats">
+                            {% if not is_debug %}
                             <a href="http://gravatar.com/emails/">
                                 <img src="http://www.gravatar.com/avatar/{{coder.md5}}?s=120" 
                                     title="Change your avatar at gravatar.com" 
                                 >
                             </a>
+                            {% endif %}
                             <h3>Coder #{{ coder.rank }} | {{ coder.name }}</h3>
                             <ul>
                                 <li><b>{{ coder.points }}</b> earned points</li>

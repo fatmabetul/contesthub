@@ -57,16 +57,27 @@
                 {% block rightcolumn %}
                 <div id="group" class="smallbox">
                     
+                    {% if not user %}
                     <div class="login-container">
                         <div class="login-box">
                             <div class="login-box-content">
-                                Sign in to NSURank with your
+                                Sign in with your
                                 <div class="login-box-title"> Google Account </div>
-                                    <a id="loginBtn" href="google.com"></a>
+                                    <a id="loginBtn" href="{{login_url}}"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="login-container">
+                        <div class="login-box">
+                            <div class="login-box-content">
+                                Welcome {{username}}! <br>
+                                <a href="{{logout_url}}">Log Out</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
 
 
                 </div>

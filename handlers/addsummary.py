@@ -1,6 +1,7 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
+from google.appengine.api import users
 
 from datetime import datetime
 
@@ -9,15 +10,26 @@ import conf
 import logging
 from model import Story, Summary, Coder
 from secret import EMAIL
+from common import get_user, admin
 
 points = [20,15,12,10,8,6,4,3,2,1]
 
 class AddSummary( webapp.RequestHandler ):
+   
+    user, login_url, logout_url, username = None, None, None, None 
+
+    @get_user
     def get(self):
+
         template_values = {
-            'is_debug' : conf.DEBUG
+            'is_debug' : conf.DEBUG,
+            'user'     : self.user,
+            'username' : self.username,
+            'login_url' : self.login_url,
+            'logout_url' : self.logout_url
         }
         
+              
         path = os.path.join( conf.APP_ROOT, 'templates', 'addsummary.html' )
         self.response.out.write( template.render( path, template_values ) )
     
@@ -103,8 +115,8 @@ class AddSummary( webapp.RequestHandler ):
             
         return [ bests, cdate ]
 
-
-
+    @get_user
+    @admin
     def post(self):
         
         ifile = self.request.get("summary")

@@ -8,6 +8,7 @@ import logging
 from model import Summary 
 
 class ShowSummary( webapp.RequestHandler ):
+
     def get(self, key):
         if not key:
             logging.error( "no key found" ) 

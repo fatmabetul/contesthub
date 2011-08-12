@@ -3,7 +3,7 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 
 import os
 import conf
-from handlers import FrontPage, Hello, NSURank
+from handlers import FrontPage, Hello, NSURank, Error
 from handlers import AddStory, AddSummary, Archive, ShowSummary
 
 __application__ = webapp.WSGIApplication(
@@ -12,6 +12,7 @@ __application__ = webapp.WSGIApplication(
         ('/addstory', AddStory),
         ('/addsummary', AddSummary),
         ('/nsurank', NSURank),
+        ('/error', Error),
         ('/summary/([^/]+)?', ShowSummary),
         ('/archive', Archive),
         ('/', FrontPage),
