@@ -128,6 +128,7 @@ ul#navbar li a:hover {
     margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding-bottom:10px;
 }
 
 .box p {
@@ -360,3 +361,25 @@ tbody tr.odd td {
     width: 100%;
 }
 
+.button {
+    background-color: #666666;
+    border: 2px solid #CCCCCC;
+    color: white;
+    cursor: pointer;
+    font-weight: normal;
+    padding: 6px 20px;
+}
+
+.button:hover {
+/*    background-color: #A1013F; */
+    background-color: #15317E;
+}
+
+.input {
+    padding: 5px;
+}
+
+.error {
+    background-color: #F8DBDB;
+    border-color: #E77776;
+}

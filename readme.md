@@ -1,10 +1,6 @@
 Things TODO
 ===========
 
-* add authorization for 
-    - /addsummary
-    - /addstory
-* add character count in /addstory
 * add a calendar as a cron job
 * make the gravatar loading lighter
     - I am prefering lazy loading with jquery

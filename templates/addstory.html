@@ -1,20 +1,76 @@
 {% extends "base.html" %}
 
 {% block title %}Add Story {% endblock %}
+{% block insidehead %}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script>
+function countChars(textbox, counter, max) {
+  var count = max - document.getElementById(textbox).value.length;
+  if (count < 0) { document.getElementById(counter).innerHTML = "<span style=\"color: red;\">" + count + "</span>"; }
+  else { document.getElementById(counter).innerHTML = count; }
+}
+
+$(document).ready(function(){
+    var form = $("#myform");
+
+    form.submit(function(){
+        if( checkheading() && checkcontent()) return true;
+        else return false;
+    }); 
+
+    function checkheading() {
+        var a = $("#heading").val();
+        if( a.length == 0 ) {
+            $("#heading").addClass("error");
+            return false;
+        }else {
+            $("#heading").removeClass("error");
+            return true;
+        }
+        return false;
+    }
+
+    function checkcontent() {
+        var a = $("#mycontent").val();
+        if( a.length == 0 || a.length > 500 ) {
+            if( a.length == 0 ) alert("Content is empty");
+            else alert("it exceeded 500 characters");
+            $("#mycontent").addClass("error");
+            return false;
+        }else {
+            $("#mycontent").removeClass("error");
+            return true;
+        }
+        return false;
+    }
+});
+
+</script>
+
+{% endblock %}
+
 {% block body %} 
         {% block leftcolumn %}
-        
-               
-            <form class="formbox" method="post" action="/addstory" accept-charset="utf-8">
+        <div class="box">  
+            <form class="formbox" id="myform" method="post" action="javascript:alert('success!');" accept-charset="utf-8">
                 
                 <div class="normalheadleft"> <h3>Add Story</h3> </div> <br>
                 
-                Heading <br> <input type='text' name ='heading' style="width:400px"> <br>
-                Content <br> <textarea name="content" rows="7" cols="40" style="width:400px"></textarea> 
-            
-            <p><input type="submit" value="Submit"></p>
+                Heading <br> <input type='text' name ='heading' id="heading" 
+                                class="input" style="width:400px"> <br> <br>
+                Content <span id="char_count"></span><br>
+                
+                <textarea name="mycontent" id="mycontent" class="input" rows="7" cols="40" style="width:400px" 
+                    onFocus="countChars('mycontent','char_count',500)" 
+                    onKeyDown="countChars('mycontent','char_count',500)" 
+                    onKeyUp="countChars('mycontent','char_count',500)"  ></textarea> 
+            <br> 
+            <input class="button" type="submit" value="Submit">
             </form>
             
             <div class="note">*Remember - a story cannot have more than 500 characters in content</div>
+        </div>
         {% endblock %}
 {% endblock %}
