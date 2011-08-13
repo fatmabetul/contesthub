@@ -30,7 +30,7 @@ h1 {
     font-weight: normal;
     letter-spacing: -1px;
     line-height: 145%;
-    padding: 4px;
+    padding: 15px;
     font-color:white;
 }
 
@@ -393,3 +393,93 @@ tbody tr.odd td {
 	border-color: #FF0000;
 	border-style: solid;
 }
+
+#summary td {
+    cursor: pointer;
+}
+
+#dropbox {
+    width:800px;
+    background:#15317E;
+    min-height:36px;
+}
+
+.dropdown {
+    list-style:none;
+    width:800px;
+    background:#2B547E;
+}
+
+.dropdown li {
+    list-style:none;
+    position:relative;
+}
+
+.dropdown li a {
+    display:block;
+    padding:0 10px;
+    text-decoration:none;
+    height:30px;
+    text-align: center;
+    line-height:30px;
+}
+
+.dropdown > li {
+    float:left;
+
+}
+.dropdown > li > a {
+    float:left;
+    color:#fff;
+    width:80px;
+    margin-bottom:22px;
+    border:1px solid #ccc;
+}
+
+.dropdown > li > a:hover,.dropdown > li:hover > a {
+    background:#2B547E;
+}
+
+.dropdown > li ul {
+    display:none;
+}
+
+.dropdown > li:hover > ul {
+    display:block;
+    width:120px;
+    position:absolute;
+    left:0;
+    top:25px;
+    margin-top:10px;
+}
+.dropdown > li > ul > li > a {
+    display:block;
+    background:#15317E;
+    color:white;
+    border:1px solid #ccc;
+}
+
+.dropdown > li > ul > li > a:hover,.dropdown > li ul > li:hover > a {
+    background:#2B547E;
+}
+
+.dropdown > li ul > li:hover > ul {
+    display:block;
+    width:200px;
+    position:absolute;
+    left:200px;
+    top:0;
+}
+
+.dropdown > li > ul > li > ul > li a {
+    display:block;
+    background:#555;
+    color:#ccc;
+}
+
+.dropdown > li > ul > li > ul > li a:hover {
+    background:#444;
+    color:#fff;
+}
+
+

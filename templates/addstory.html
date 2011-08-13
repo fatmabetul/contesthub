@@ -2,53 +2,9 @@
 
 {% block title %}Add Story {% endblock %}
 {% block insidehead %}
-
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-
-<script>
-function countChars(textbox, counter, max) {
-  var count = max - document.getElementById(textbox).value.length;
-  if (count < 0) { document.getElementById(counter).innerHTML = "<span style=\"color: red;\">" + count + "</span>"; }
-  else { document.getElementById(counter).innerHTML = count; }
-}
-
-$(document).ready(function(){
-    var form = $("#myform");
-
-    form.submit(function(){
-        if( checkheading() && checkcontent()) return true;
-        else return false;
-    }); 
-
-    function checkheading() {
-        var a = $("#heading").val();
-        if( a.length == 0 ) {
-            $("#heading").addClass("error");
-            return false;
-        }else {
-            $("#heading").removeClass("error");
-            return true;
-        }
-        return false;
-    }
-
-    function checkcontent() {
-        var a = $("#content").val();
-        if( a.length == 0 || a.length > 500 ) {
-            if( a.length == 0 ) alert("Content is empty");
-            else alert("it exceeded 500 characters");
-            $("#content").addClass("error");
-            return false;
-        }else {
-            $("#content").removeClass("error");
-            return true;
-        }
-        return false;
-    }
-});
-
-</script>
-
+<script type="text/javascript" src="js/countchar.js"></script>
+<script type="text/javascript" src="js/storyvalidator.js"></script>
 {% endblock %}
 
 {% block body %} 
