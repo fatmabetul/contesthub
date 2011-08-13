@@ -33,14 +33,14 @@ $(document).ready(function(){
     }
 
     function checkcontent() {
-        var a = $("#mycontent").val();
+        var a = $("#content").val();
         if( a.length == 0 || a.length > 500 ) {
             if( a.length == 0 ) alert("Content is empty");
             else alert("it exceeded 500 characters");
-            $("#mycontent").addClass("error");
+            $("#content").addClass("error");
             return false;
         }else {
-            $("#mycontent").removeClass("error");
+            $("#content").removeClass("error");
             return true;
         }
         return false;
@@ -54,7 +54,11 @@ $(document).ready(function(){
 {% block body %} 
         {% block leftcolumn %}
         <div class="box">  
-            <form class="formbox" id="myform" method="post" action="javascript:alert('success!');" accept-charset="utf-8">
+
+            {% if not user %}
+                <div class="errorbox">You are not logged in</div>
+            {% endif %}
+            <form class="formbox" id="myform" method="post" action="/addstory" accept-charset="utf-8">
                 
                 <div class="normalheadleft"> <h3>Add Story</h3> </div> <br>
                 
@@ -62,10 +66,10 @@ $(document).ready(function(){
                                 class="input" style="width:400px"> <br> <br>
                 Content <span id="char_count"></span><br>
                 
-                <textarea name="mycontent" id="mycontent" class="input" rows="7" cols="40" style="width:400px" 
-                    onFocus="countChars('mycontent','char_count',500)" 
-                    onKeyDown="countChars('mycontent','char_count',500)" 
-                    onKeyUp="countChars('mycontent','char_count',500)"  ></textarea> 
+                <textarea name="content" id="content" class="input" rows="7" cols="40" style="width:400px" 
+                    onFocus="countChars('content','char_count',500)" 
+                    onKeyDown="countChars('content','char_count',500)" 
+                    onKeyUp="countChars('content','char_count',500)"  ></textarea> 
             <br> 
             <input class="button" type="submit" value="Submit">
             </form>

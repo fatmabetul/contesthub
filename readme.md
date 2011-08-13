@@ -1,6 +1,7 @@
 Things TODO
 ===========
 
+* a drop down menu for adds
 * add a calendar as a cron job
 * make the gravatar loading lighter
     - I am prefering lazy loading with jquery

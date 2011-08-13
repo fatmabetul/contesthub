@@ -383,3 +383,13 @@ tbody tr.odd td {
     background-color: #F8DBDB;
     border-color: #E77776;
 }
+
+.errorbox {
+	font-size: 12px;
+	text-align: center;
+    background-color: #F8DBDB;
+	padding: 10px;
+	border-width: thin;
+	border-color: #FF0000;
+	border-style: solid;
+}
