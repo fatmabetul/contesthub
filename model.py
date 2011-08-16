@@ -26,3 +26,16 @@ class Coder( db.Model ):
     email = db.StringProperty()
     md5 = db.StringProperty()
 
+class Event( db.Model ):
+    name = db.StringProperty()
+    date = db.DateTimeProperty()
+    detailed_date = db.StringProperty()
+    time = db.StringProperty()
+    location = db.StringProperty()
+
+class Contest( db.Model ):
+    name = db.StringProperty()
+    date = db.DateTimeProperty()
+    detailed_date = db.StringProperty()
+    time = db.StringProperty()
+    location = db.StringProperty()

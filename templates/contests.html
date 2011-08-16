@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block leftcolumn %}
+<div class="box">
+    <div class="events">
+        <div class="normalheadleft"> <h3>Events Around the World</h3> </div> <br>
+        <hr><br>
+        {% for event in contests %}
+        <div class="event">
+            <b>{{ event.name }}</b> <br> 
+            <b>on</b> {{ event.detailed_date }} <br>
+            <b>from</b> {{event.time}} <b>at</b> {{ event.location }} <br> 
+        </div>
+        <hr><br>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+
+

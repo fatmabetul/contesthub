@@ -176,6 +176,7 @@ ul#navbar li a:hover {
     padding: 45px 5px 0;
     position: relative;
     font-family: Arial;
+    width: 65px;
 }
 
 .date .day {
@@ -187,7 +188,7 @@ ul#navbar li a:hover {
 }
 
 .date .month {
-    font-size: 30px;
+    font-size: 32px;
     text-transform: uppercase;
 }
 
@@ -480,6 +481,54 @@ tbody tr.odd td {
 .dropdown > li > ul > li > ul > li a:hover {
     background:#444;
     color:#fff;
+}
+
+.smallnote {
+    font-size:11px;
+    color:grey;
+    float:right;
+}
+
+.eventbox {
+    width: 410px;
+}
+
+.events{
+    min-height:170px;
+    margin-left: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom:10px;
+    padding-top:10px;
+}
+
+.eventshead {
+	font-variant: small-caps; 
+    font-size: 20px;
+    font-weight: bold;
+    float:right;
+}
+
+.event {
+    font-size:14px;
+    width: 450px;
+}
+
+.events hr {
+    width:450px;
+    float:left;
+}
+
+.event b {
+	font-variant: small-caps; 
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.smallme {
+	font-variant: small-caps; 
+    font-size: 17px;
 }
 
 

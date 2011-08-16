@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Add Story {% endblock %}
+
+{% block insidehead %}
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+  <script>
+	$(document).ready( function() {
+		$( "#datepicker" ).datepicker({
+			altField: "#alternate",
+			altFormat: "MM d, yy - DD"
+		});
+    });
+  </script>
+
+{% endblock %}
+
+{% block body %} 
+        {% block leftcolumn %}
+        <div class="box">  
+
+            {% if not user %}
+                <div class="errorbox">You are not logged in</div>
+            {% endif %}
+
+            <form class="formbox" id="eventform" method="post" action="/addevent" accept-charset="utf-8">
+                <div class="normalheadleft"> <h3>Add Event</h3> </div> <br>
+                Date <br>
+                <div class="eventbox">
+                    <input class='input' name='datepicker' id='datepicker' type='text'  style="width:90px" > 
+                    <input class='input' name='alternate' id='alternate' type='text' style="width:285px" > <br>
+                        <div class="smallnote">Choose from the calendar</div> <br> 
+                    Event<br> <input type='text' name ='name' id="name" class="input" style="width:400px"> <br>
+                        <div class="smallnote"> Name of the event - Like "Class on Dynamic Programming" </div><br>
+                    When<br> <input type='text' name ='time' id="time" class="input" style="width:400px"> <br> 
+                        <div class="smallnote"> Like "4pm" or "12am-5pm" </div> <br>
+                    Location<br> <input type='text' name ='loc' id="loc" class="input" style="width:400px"> <br> 
+                        <div class="smallnote"> Like "SAC 514" </div> <br><br>
+                </div> 
+
+                <input class="button" type="submit" value="Submit">
+            </form>
+            
+        </div>
+        {% endblock %}
+{% endblock %}
+
