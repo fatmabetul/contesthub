@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from google.appengine.ext import db
@@ -9,6 +11,7 @@ import logging
 from common import get_user
 from model import Event, Contest
 from datetime import date, timedelta, datetime
+from addcontest import AddContest
 
 class Events( webapp.RequestHandler ):
     
@@ -23,7 +26,10 @@ class Events( webapp.RequestHandler ):
         q.filter( "date >", last )
         q.order( "date" )
         events = q.fetch(100)
-    
+  
+        loader = AddContest()
+        loader.load_contests()
+
         q = db.Query( Contest )
         q.filter( "date >", last )
         q.order( "date" )

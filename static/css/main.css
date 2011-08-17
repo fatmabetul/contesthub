@@ -128,7 +128,7 @@ ul#navbar li a:hover {
     margin-left: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-    padding-bottom:10px;
+    padding-bottom:20px;
 }
 
 .box p {
@@ -239,7 +239,7 @@ ul#navbar li a:hover {
 }
 
 #list2 { width:600px; }
-#list2 ol { font-family: Verdana, Georgia, Times, serif; font-size:20px; color:black;  }
+#list2 ol { font-family: Verdana, Georgia, Times, serif; font-size:15px; color:black;  }
 #list2 ol li { }
 #list2 ol li p { padding:8px; font-style:normal; font-family:Verdana, Arial; font-size:15px; color:black; border-left: 1px solid #999; }
 #list2 ol li p em { display:block; }
@@ -494,7 +494,6 @@ tbody tr.odd td {
 }
 
 .events{
-    min-height:170px;
     margin-left: 20px;
     margin-left: 20px;
     margin-top: 20px;

@@ -39,3 +39,6 @@ class Contest( db.Model ):
     detailed_date = db.StringProperty()
     time = db.StringProperty()
     location = db.StringProperty()
+
+class LastUpdate( db.Model ):
+    date =db.DateTimeProperty()

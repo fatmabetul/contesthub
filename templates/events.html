@@ -4,15 +4,20 @@
 <div class="box">
     <div class="events">
         <div class="normalheadleft"> <h3>Events at NSU</h3> </div> <br>
-        <hr><br>
-        {% for event in events %}
-        <div class="event">
-            <div class="smallme">{{ event.name }}</div> 
-            <b>on</b> {{ event.detailed_date }} <br>
-            <b>from</b> {{event.time}} <b>at</b> {{ event.location }} <br> 
-        </div>
-        <hr><br>
-        {% endfor %}
+
+        {% if events %}
+            <hr><br>
+            {% for event in events %}
+            <div class="event">
+                <div class="smallme">{{ event.name }}</div> 
+                <b>on</b> {{ event.detailed_date }} <br>
+                <b>from</b> {{event.time}} <b>at</b> {{ event.location }} <br> 
+            </div>
+            <hr><br>
+            {% endfor %}
+        {% else %}
+            <div class="event"> There's no scheduled event. </div>
+        {% endif %}
     </div>
 
     <div class="events">
@@ -20,9 +25,11 @@
         <hr><br>
         {% for event in contests %}
         <div class="event">
+            <br>
             <div class="smallme">{{ event.name }}</div> 
             <b>on</b> {{ event.detailed_date }} <br>
             <b>from</b> {{event.time}} <b>at</b> <a href="http:\\{{ event.location }}">{{ event.location }}</a> <br> 
+            <br>
         </div>
         <hr><br>
         {% endfor %}
