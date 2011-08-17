@@ -1,10 +1,7 @@
 Things TODO
 ===========
 
-* add a calendar as a cron job
-* make the gravatar loading lighter
-    - I am prefering lazy loading with jquery
-    - alternatively we can take pictures of smaller size
+* making it more generic - changing university names as variable
 * add blog support
 * add twitter api
 * change the design suitable for the new additions
