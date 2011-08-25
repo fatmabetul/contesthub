@@ -10,12 +10,12 @@ handlers:
 - url: /(.*\.(js|css))
   static_files: static/\1
   upload: static/.*
-  expiration: "1d"
+  expiration: "0d"
 
 - url: /(.*\.(html|htm|gif|jpg|png|ico))
   static_files: static/\1
   upload: static/.*
-  expiration: "1d"
+  expiration: "0d"
 
 - url: /.*
   script: main.py

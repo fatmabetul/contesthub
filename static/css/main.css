@@ -1,6 +1,3 @@
-/* ---------------------- */
-/* Page Elements          */
-/* ---------------------- */
 
 .container {
     margin:0 auto;
@@ -9,7 +6,7 @@
 }
 
 html, form, fieldset {
-    font-family:Verdana,Geneva,Helvetica,sans-serif;
+    font-family: 'Delius', sans-serif;
 }
 
 .formbox{
@@ -134,12 +131,10 @@ ul#navbar li a:hover {
 .box p {
     margin-left: 5px;
     margin-right: 5px;
-    font-size: 15px;
     line-height: 20px;
 }
 
 .box ol {
-    font-size: 15px;
     line-height: 20px;
 }
 
@@ -160,7 +155,6 @@ ul#navbar li a:hover {
 .smallbox p {
     margin-left: 5px;
     margin-right: 5px;
-    font-size: 15px;
     line-height: 20px;
     text-align: center;
 }
@@ -239,11 +233,11 @@ ul#navbar li a:hover {
 }
 
 #list2 { width:600px; }
-#list2 ol { font-family: Verdana, Georgia, Times, serif; font-size:15px; color:black;  }
+#list2 ol { color:black;  }
 #list2 ol li { }
-#list2 ol li p { padding:8px; font-style:normal; font-family:Verdana, Arial; font-size:15px; color:black; border-left: 1px solid #999; }
+#list2 ol li p { padding:8px; font-style:normal; color:black; border-left: 1px solid #999; }
 #list2 ol li p em { display:block; }
-#list2 ol li b { font-size:15px }
+#list2 ol li b { }
 
 .medbox{
     background: #d5eaf0;
@@ -258,7 +252,6 @@ table, caption, td, tr, th {
 	margin:0;
 	padding:0;
 	font-weight:normal;
-    font-family: Verdana, Arial, Helvetica, sans-serif;
 }
 
 table {
@@ -269,7 +262,6 @@ table {
 
 caption {
     text-align:left;
-    font-size:15px;
     padding-bottom:10px;
 }
 
@@ -510,7 +502,6 @@ tbody tr.odd td {
 }
 
 .event {
-    font-size:14px;
     width: 450px;
 }
 
