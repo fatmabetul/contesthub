@@ -33,7 +33,7 @@ class Events( webapp.RequestHandler ):
         q = db.Query( Contest )
         q.filter( "date >", last )
         q.order( "date" )
-        contests = q.fetch(10) 
+        contests = q.fetch(5) 
 
         template_values = {
             'is_debug' : conf.DEBUG,

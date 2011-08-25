@@ -142,7 +142,7 @@ class AddContest( webapp.RequestHandler ):
                 contest = Contest( 
                     date = date, 
                     detailed_date = detailed_date, 
-                    time = time,
+                    time = time.lower(),
                     name = name,
                     location = location
                 )

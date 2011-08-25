@@ -25,11 +25,9 @@
         <hr><br>
         {% for event in contests %}
         <div class="event">
-            <br>
             <div class="smallme">{{ event.name }}</div> 
             <b>on</b> {{ event.detailed_date }} <br>
             <b>from</b> {{event.time}} <b>at</b> <a href="http:\\{{ event.location }}">{{ event.location }}</a> <br> 
-            <br>
         </div>
         <hr><br>
         {% endfor %}
