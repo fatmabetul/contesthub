@@ -26,6 +26,17 @@ class Coder( db.Model ):
     email = db.StringProperty()
     md5 = db.StringProperty()
 
+class Team( db.Model ):
+    name = db.StringProperty()
+    contest = db.IntegerProperty()
+    solve = db.IntegerProperty()
+    attempt = db.IntegerProperty()
+    points = db.IntegerProperty()
+    rank = db.IntegerProperty()
+    accuracy = db.StringProperty()
+
+    image = db.StringProperty()
+
 class Event( db.Model ):
     name = db.StringProperty()
     date = db.DateTimeProperty()

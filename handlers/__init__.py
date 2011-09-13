@@ -8,4 +8,6 @@ from events import Events
 from frontpage import FrontPage
 from hello import Hello
 from nsurank import NSURank 
+from individual import Individual
+from teams import Teams 
 from summary import ShowSummary 

@@ -8,7 +8,7 @@ from datetime import datetime
 import os, re, md5
 import conf
 import logging
-from model import Story, Summary, Coder
+from model import Story, Summary, Coder, Team
 from secret import EMAIL
 from common import get_user, admin
 
@@ -46,7 +46,7 @@ class AddSummary( webapp.RequestHandler ):
        
         rankpat = r"""
             [A-Za-z]+\ ([A-Za-z]+\ \d+)            # weekday, month, day
-            \ \d\d:\d\d:\d\d\ [A-Za-z]+\ (\d+)</p> # year
+            \ \d\d:\d\d:\d\d\ [A-Za-z]+\ (\d+)     # year
             """
         rankreg = re.compile( rankpat, re.VERBOSE ) 
         
@@ -58,14 +58,18 @@ class AddSummary( webapp.RequestHandler ):
 
         bests = ""
         results = reg.finditer(f)
+
+        rank = 0;
         for result in results:
             # picking up details
-            
-            rank = int(result.group(1))
+           
+            rank += 1 
             name = result.group(2)
             attempts = int(result.group(3))
             solved = int(result.group(4))
             earned = 0
+
+            logging.error( name + " " + str( rank ) )
 
             # pick up the earned points
             if rank <= 10 and int(solved) != 0:
@@ -115,14 +119,108 @@ class AddSummary( webapp.RequestHandler ):
             
         return [ bests, cdate ]
 
+ # update data from one file
+    def team_process(self, f):
+        
+        pattern = r"""
+            <td>(\d+)</td>            # rank
+            <td>([A-Za-z. (),_]+)</td>    # name
+            .*                        # rest of the line
+            <td>(\d+)/(\d+)</td>      # attempt, problemcount
+            """
+        reg = re.compile( pattern, re.VERBOSE )
+       
+        rankpat = r"""
+            [A-Za-z]+\ ([A-Za-z]+\ \d+)            # weekday, month, day
+            \ \d\d:\d\d:\d\d\ [A-Za-z]+\ (\d+)     # year
+            """
+        rankreg = re.compile( rankpat, re.VERBOSE ) 
+        
+        #finding the date of the event
+        match = rankreg.search( f )
+        cdate = ""
+        if match:
+            cdate = match.group(1) + " " + match.group(2)
+            logging.error( cdate )
+            logging.error( "finding something" )
+        else:
+            logging.error( "nothing found" )
+
+        bests = ""
+        results = reg.finditer(f)
+        rank = 0;
+        for result in results:
+            # picking up details
+            
+            rank += 1
+            name = result.group(2)
+            attempts = int(result.group(3))
+            solved = int(result.group(4))
+            earned = 0
+
+            # pick up the earned points
+            if rank <= 10 and int(solved) != 0:
+                earned = points[ rank-1 ]
+                if rank <= 3:
+                    if rank == 2:
+                        bests += ", "
+                    elif rank == 3:
+                        bests += " and "
+                    bests += name
+           
+
+            c = db.Query( Team )
+            c.filter( 'name =' , name )
+            teams = c.fetch(1)
+            
+            # updating database
+            if len( teams ) == 0:
+                # it was never in ranklist
+                team = Team()
+                team.name = name
+                team.solve = solved
+                team.points = earned
+                team.contest = 1
+                team.attempt = attempts
+                team.image = "img/nsu2.gif"
+                team.accuracy = str( round(( team.solve * 100. ) /  team.attempt, 2) )
+                team.put()
+            else:
+                for team in teams: # it's one object though
+                    team.solve += solved
+                    team.points += earned
+                    team.contest += 1
+                    team.attempt += attempts
+                    team.accuracy = str( round(( team.solve * 100. ) / team.attempt,2) )
+                    team.put()
+            
+            
+        return [ bests, cdate ]
+
+
+
     @get_user
     @admin
     def post(self):
         
         ifile = self.request.get("summary")
+        check = self.request.get("isteam")
+
         if not ifile:
             logging.error("no file selected")
             self.redirect( "/addsummary" )
+        elif check == "team":
+            mytuple = self.team_process( ifile ) 
+            bests = mytuple[0]
+            contestdate = mytuple[1]
+
+            s = Summary(
+                summary = ifile,
+                bests = bests,
+                name = contestdate
+            )
+            s.put()
+            self.redirect( "/archive" )
         else:
             mytuple = self.process( ifile ) 
             bests = mytuple[0]

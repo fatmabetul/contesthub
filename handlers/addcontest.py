@@ -106,7 +106,8 @@ class AddContest( webapp.RequestHandler ):
         db.delete( contests )
         
         # we won't pick the russian contests
-        russia = [ 'contests.snarknews.info' , 'dl.gsu.by' ]  
+        russia = [ 'contests.snarknews.info' , 'dl.gsu.by', 'acm.dvpion.ru', 'opencup.ru', 'e-olimp.com' ]
+        goodrussia = [ 'acm.timus.ru' ]  
         
         pattern = ur"""
             \s+<tr\ class=\'[A-Za-z_]+\'>\s+
@@ -138,6 +139,15 @@ class AddContest( webapp.RequestHandler ):
             
             if location in russia: 
                 continue
+            elif location in goodrussia:
+                contest = Contest( 
+                    date = date, 
+                    detailed_date = detailed_date, 
+                    time = time.lower(),
+                    name = "A Russian Contest at " + location,
+                    location = location
+                )
+                contest.put()
             else:
                 contest = Contest( 
                     date = date, 

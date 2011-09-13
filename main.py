@@ -6,6 +6,7 @@ import conf
 from handlers import FrontPage, Hello, NSURank, Error 
 from handlers import AddStory, AddSummary, Archive, ShowSummary
 from handlers import AddEvent, Events, AddContest
+from handlers import Teams, Individual
 
 __application__ = webapp.WSGIApplication(
     [
@@ -14,7 +15,8 @@ __application__ = webapp.WSGIApplication(
         ('/addsummary', AddSummary),
         ('/addevent', AddEvent),
         ('/contests', AddContest),
-        ('/nsurank', NSURank),
+        ('/teams', Teams),
+        ('/individual', Individual),
         ('/events', Events),
         ('/error', Error),
         ('/summary/([^/]+)?', ShowSummary),
